@@ -19,57 +19,49 @@
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap"
       rel="stylesheet"
     />
+    <style>
+      .rotate-up {
+        transform: rotate(180deg);
+      }
+     
+    </style>
+  
   </head>
   <body class="bg-linear-to-b from-[#000000] to-[#FFFDDE] font-sans bg-[#]">
     <!-- HEADER -->
     <header
       id="navbar"
-      class="fixed top-0 bg-black w-full z-50 text-white select-none transition-all duration-300"
+      class="fixed top-1   navbar-transparent w-full z-50 text-white select-none transition-all duration-300"
     >
       <nav class="container mx-auto flex justify-between items-center py-1.5">
         <!-- Brand -->
         <div
-          class="flex items-center space-x-2 pl py-2.5 transition ease-in-out delay-100 hover:scale-105 transition-all duration-300"
+          class="flex items-center space-x-2 pl-5 py-2.5  ease-in-out delay-100 hover:scale-105 transition-all duration-300"
         >
           <img
             src="https://i.imghippo.com/files/Ms9413lNc.webp"
             alt="Logo"
-            class="w-12 h-12"
+            class="w-14 h-14"
           />
-          <h1
-            class="text-base font-bold leading-tight uppercase font-[Roboto] font-black italic"
-          >
-            SMK Bina Siswa<br />2 Cililin
+          <h1 class="text-base font-bold leading-tight uppercase font-[Roboto] italic">
+            SMK Bina Siswa<br/>2 Cililin
           </h1>
         </div>
 
         <li
-          class="group list-none hover:bg-blue-700 rounded-lg transition-all duration-300"
+          class="group list-none transition-all duration-300"
         >
-          <button
-            data-target="full-width-megamenu"
-            id="menu-button"
-            class="flex flex-col items-center text-white text-center text-lg font-medium transition-all duration-100 mb-2 px-4 py-2 lg:mb-0 mr-auto lg:text-left lg:m-0"
-          >
-            MENU
-            <svg
-              id="menu-arrow"
-              class="w-3 h-2 mt-1 transition-transform duration-300"
-              width="10"
-              height="6"
-              viewBox="0 0 10 6"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M1 1L3.58579 3.58579C4.25245 4.25245 4.58579 4.58579 5 4.58579C5.41421 4.58579 5.74755 4.25245 6.41421 3.58579L9 1"
-                stroke="currentColor"
-                stroke-width="1.6"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              ></path>
-            </svg>
-          </button>
+
+        <button data-target="full-width-megamenu" id="menu-button"
+          class="flex flex-col  items-center text-base  text-center lg:text-base font-medium hover:text-blue-700 transition-all duration-100 mb-2 lg:mb-0 mr-auto lg:text-left lg:m-0">
+          MENU
+          <svg id="menu-arrow" class="w-3 h-2 mt-1 transition-transform duration-300" width="10" height="6" viewBox="0 0 10 6"
+            fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M1 1L3.58579 3.58579C4.25245 4.25245 4.58579 4.58579 5 4.58579C5.41421 4.58579 5.74755 4.25245 6.41421 3.58579L9 1"
+              stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg> </button>
+
 
           <!-- Dropdown menu -->
           <div
@@ -293,7 +285,7 @@
                       </div>
                       <div class="ml-4 w-4/5">
                         <h5
-                          class="text-gray-900 text-base mb-1.5 font-semibold"
+                          class="text-gray-900  text-base mb-1.5 font-semibold"
                         >
                           Artikel Sekolah
                         </h5>
@@ -535,7 +527,7 @@
           <button
             class="bg-blue-700 text-white px-4 py-2 rounded-lg hover:bg-blue-950 hover:scale-110 transition-all duration-300"
           >
-            SPMB
+            Daftar SPMB
           </button>
           <button
             class="text-white text-xl hover:text-yellow-300 hover:scale-125 transition-all duration-300"
@@ -559,6 +551,76 @@
       </nav>
     </header>
 
+<!-- HERO -->
+<section class="w-full overflow-hidden pt-2 px-4 relative">
+  <div class="relative w-full rounded-3xl overflow-hidden">
+
+    <!-- Background Image -->
+    <img src="HERO.png" alt="Background"
+      class="w-full h-full object-cover object-center rounded-3xl shadow-[0px_35px_60px_-15px_rgba(0,0,0,0.3)]" />
+
+    <!-- Dark Blur Overlay (optional) -->
+    <div class="absolute inset-0 z-10 rounded-3xl hidden bg-black/50 backdrop-blur-[2px] pointer-events-none"></div>
+
+    <!-- Konten -->
+    <div class="absolute top-[33%] left-[8%] max-w-[90%] sm:max-w-[516px] z-20">
+      <h2
+        class="absolute -top-[40px] left-0 w-[425px] h-[37px] text-white text-[27px] leading-[28px] font-normal tracking-[-1px] font-[Poppins]">
+        Informasi Pendaftaran Siswa Baru
+      </h2>
+
+      <h1
+        class="absolute top-0 left-0 w-[516px] h-[438px] text-white text-[90px] font-bold leading-[90px] tracking-[-1px] font-[Nunito]">
+        SMKS BINA <br /> SISWA 2 <br /> CILILIN
+      </h1>
+
+      <a href="">
+        <h2
+          class="absolute top-[18.5em] left-0 text-white text-[17px] font-bold leading-[40px] whitespace-nowrap font-[Nunito]">
+          INFORMASI PENDAFTARAN
+        </h2>
+      </a>
+
+      <div class="absolute -bottom-[22em] left-0 w-[269px] h-[1px] bg-white rounded"></div>
+    </div>
+<!-- 3 Card Statistik -->
+<div class="absolute bottom-[25px] left-[18em] w-full flex justify-center gap-10 z-30 ">
+  <!-- Card 1 -->
+  <div class="rounded-xl px-6 py-2 flex flex-col items-center w-[180px] h-[150px] text-center 
+    [background-image:radial-gradient(closest-side_at_center,_rgba(255,255,255,0.82)_59%,_rgba(230,238,255,0.82)_100%)] shadow-[-1px_4px_4px_rgba(0,0,0,0.25)]
+">
+    <img src="./Assets/Icon/misc/murid_icon.gif" class="w-[75px] mb-2" alt="Pelajar" />
+    <div class="-mt-[10px] leading-[25px]">
+      <p class="text-[20px] font-bold text-gray-500">422</p>
+      <p class="text-[20px] font-semibold text-gray-800">PELAJAR</p>
+    </div>
+  </div>
+<!-- Card 2 -->
+  <div
+    class="  shadow-[-1px_4px_4px_rgba(0,0,0,0.25)]  [background-image:radial-gradient(closest-side_at_center,_rgba(255,255,255,0.82)_59%,_rgba(230,238,255,0.82)_100%)] rounded-xl px-6 py-2 flex flex-col items-center w-[180px] h-[150px] text-center">
+    <img src="./Assets/Icon/misc/guru_icon.gif" class="w-[71px] mb-2" alt="Pengajar" />
+    <div class="-mt-[10px] leading-[25px]">
+      <p class="text-[20px] font-bold text-gray-500">20</p>
+      <p class="text-[20px] font-semibold text-gray-800">PENGAJAR</p>
+    </div>
+  </div>
+
+  <!-- Card 3 -->
+  <div
+    class="  shadow-[-1px_4px_4px_rgba(0,0,0,0.25)]  [background-image:radial-gradient(closest-side_at_center,_rgba(255,255,255,0.82)_59%,_rgba(230,238,255,0.82)_100%)] rounded-xl px-6 py-2 flex flex-col items-center w-[180px] h-[150px] text-center">
+    <img src="./Assets/Icon/misc/class_icon.gif" class="w-[71px] mb-2" alt="Ruangan" />
+    <div class="-mt-[10px] leading-[25px]">
+      <p class="text-[20px] font-bold text-gray-500">24</p>
+      <p class="text-[20px] font-semibold text-gray-800">RUANGAN</p>
+    </div>
+  </div>
+</div>
+
+  </div>
+</section>
+
+
+
     <!-- CARD REKAPITULASI -->
     <!-- ABOUT -->
     <!-- JURUSAN -->
@@ -571,32 +633,32 @@
     <!-- FOOTHER -->
     <script src="https://cdn.jsdelivr.net/npm/pagedone@1.2.2/src/js/pagedone.js"></script>
     <script>
-      const menuBtn = document.getElementById("menu-button");
-      const arrow = document.getElementById("menu-arrow");
-      const megaMenu = document.getElementById("megamenu-with-image");
+        const menuBtn = document.getElementById("menu-button");
+        const arrow = document.getElementById("menu-arrow");
+        const megaMenu = document.getElementById("full-width-megamenu");
 
-      let hideTimeout;
+        let hideTimeout;
 
-      const showMenu = () => {
-        clearTimeout(hideTimeout);
-        megaMenu.classList.remove("hidden");
-        arrow.classList.add("rotate-180");
-      };
+        const showMenu = () => {
+          clearTimeout(hideTimeout);
+          megaMenu.classList.remove("hidden");
+          arrow.classList.add("rotate-up"); // rotate panah ke atas
+        };
 
-      const hideMenu = () => {
-        hideTimeout = setTimeout(() => {
-          megaMenu.classList.add("hidden");
-          arrow.classList.remove("rotate-180");
-        }, 100);
-      };
+        const hideMenu = () => {
+          hideTimeout = setTimeout(() => {
+            megaMenu.classList.add("hidden");
+            arrow.classList.remove("rotate-up"); // baru balik ke bawah setelah menu disembunyikan
+          }, 500);
+        };
 
-      menuBtn.addEventListener("mouseenter", showMenu);
-      menuBtn.addEventListener("mouseleave", hideMenu);
+        menuBtn.addEventListener("mouseenter", showMenu);
+        menuBtn.addEventListener("mouseleave", hideMenu);
 
-      megaMenu.addEventListener("mouseenter", () => {
-        clearTimeout(hideTimeout);
-      });
-      megaMenu.addEventListener("mouseleave", hideMenu);
-    </script>
+        megaMenu.addEventListener("mouseenter", () => {
+          clearTimeout(hideTimeout);
+        });
+        megaMenu.addEventListener("mouseleave", hideMenu);
+          </script>
   </body>
 </html>
