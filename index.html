@@ -1,0 +1,1415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SMKS Bina Siswa 2 Cililin</title>
+
+    <link rel="stylesheet" href="self_utilities.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/pagedone@1.2.2/src/css/pagedone.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-HASH" crossorigin="anonymous"
+        referrerpolicy="no-referrer" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Oswald:wght@200..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto+Slab:wght@100..900&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+
+    <style>
+        .rotate-up {
+            transform: rotate(180deg);
+        }
+
+        @keyframes arrowMove {
+
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+
+            50% {
+                transform: translateX(5px);
+            }
+        }
+
+        /* RING POSISI */
+        .radial-ring {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        /* ROTASI RING */
+        #outer-ring {
+            animation: rotateClockwise 30s linear infinite;
+            transform-origin: center;
+        }
+
+        #inner-ring {
+            animation: rotateCounter 45s linear infinite;
+            transform-origin: center;
+        }
+
+        /* ICON FOLLOW ROTASI BALIKAN SUPAYA TEGAK */
+        .icon-wrapper-outer {
+            animation: rotateCounter 30s linear infinite;
+            transform-origin: center;
+        }
+
+        .icon-wrapper-inner {
+            animation: rotateClockwise 45s linear infinite;
+            transform-origin: center;
+        }
+
+        /* ANIMASI ROTASI */
+        @keyframes rotateClockwise {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes rotateCounter {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(-360deg);
+            }
+        }
+
+        /* TOOLTIP */
+        .tooltip {
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(5px);
+            background: #1CA4FF;
+            color: white;
+            padding: 0.25rem 0.5rem;
+            font-size: 0.75rem;
+            border-radius: 0.375rem;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+
+        .group:hover .tooltip {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+    </style>
+</head>
+
+<body class="bg-base text-primary font-sans transition-all duration-300">
+<!-- HEADER -->
+<header id="navbar" class="fixed navbar-transparent w-full z-50 text-white select-none transition-all duration-300">
+  <nav id="navbar-content" class="container  mx-auto flex justify-between items-center py-3 transition-all duration-300">
+      <!-- Brand -->
+      <div class="flex items-center space-x-2 pl-5 py-2.5 ease-in-out delay-100 hover:scale-105 transition-all duration-300">
+          <img src="https://i.imghippo.com/files/Ms9413lNc.webp" alt="Logo" class="w-14 h-14" />
+          <h1 class="text-base font-bold leading-tight uppercase font-[Roboto] italic">
+              SMK Bina Siswa<br />2 Cililin
+          </h1>
+      </div>
+
+      <li class="group list-none transition-all duration-300">
+          <button data-target="full-width-megamenu" id="menu-button"
+              class="flex flex-col items-center text-base text-center lg:text-base font-medium hover:text-blue-700 transition-all duration-100 mb-2 lg:mb-0 mr-auto lg:text-left lg:m-0">
+              MENU
+              <svg id="menu-arrow" class="w-3 h-2 mt-1 transition-transform duration-300" width="10" height="6" viewBox="0 0 10 6" fill="none"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 1L3.58579 3.58579C4.25245 4.25245 4.58579 4.58579 5 4.58579C5.41421 4.58579 5.74755 4.25245 6.41421 3.58579L9 1"
+                      stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+          </button>
+
+          <!-- Dropdown menu -->
+          <div id="megamenu-with-image"
+              class="hidden dropdown-menu animate-fade z-10 absolute top-full left-[68px] right-[68px] bg-white rounded-b-lg  shadow-[0px_15px_30px_0px_rgba(16,24,40,0.1)] px-6 py-2 group-hover:block">
+              <div class="container mx-auto lg:flex justify-between">
+                  <div class="p-0 pr-4 lg:flex lg:justify-between lg:w-2/3">
+                      <ul class="text-sm text-gray-700" aria-labelledby="dropdownLargeButton">
+                          <h6 class="font-medium text-sm text-gray-500 mb-2 ml-4">
+                              Akademik
+                          </h6>
+                          <li class="">
+                              <a href="javascript:;" class="px-3 py-5 transition-all duration-500 hover:bg-gray-50 hover:rounded-xl flex">
+                                  <div class="rounded-lg w-12 h-12 flex justify-center">
+                                      <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                          <path
+                                              d="M20.4121 9.00861V9.90861V9.00861ZM23.8332 5.58756L24.7332 5.58756L23.8332 5.58756ZM20.4121 2.1665V1.2665V2.1665ZM16.9911 5.58756H16.0911H16.9911ZM12.9998 4.20685C13.4969 4.20685 13.8998 3.80391 13.8998 3.30685C13.8998 2.8098 13.4969 2.40685 12.9998 2.40685V4.20685ZM23.5928 13.57C23.5928 13.073 23.1899 12.67 22.6928 12.67C22.1958 12.67 21.7928 13.073 21.7928 13.57H23.5928ZM7.58317 13.1832C7.08611 13.1832 6.68317 13.5861 6.68317 14.0832C6.68317 14.5802 7.08611 14.9832 7.58317 14.9832V13.1832ZM12.9998 14.9832C13.4969 14.9832 13.8998 14.5802 13.8998 14.0832C13.8998 13.5861 13.4969 13.1832 12.9998 13.1832V14.9832ZM7.58317 17.5165C7.08611 17.5165 6.68317 17.9194 6.68317 18.4165C6.68317 18.9136 7.08611 19.3165 7.58317 19.3165L7.58317 17.5165ZM17.3332 19.3165C17.8302 19.3165 18.2332 18.9136 18.2332 18.4165C18.2332 17.9194 17.8302 17.5165 17.3332 17.5165L17.3332 19.3165ZM20.4121 9.90861C21.5581 9.90861 22.6572 9.45336 23.4676 8.643L22.1948 7.37021C21.722 7.843 21.0807 8.10861 20.4121 8.10861V9.90861ZM23.4676 8.643C24.2779 7.83265 24.7332 6.73357 24.7332 5.58756L22.9332 5.58756C22.9332 6.25618 22.6676 6.89742 22.1948 7.37021L23.4676 8.643ZM24.7332 5.58756C24.7332 4.44154 24.2779 3.34246 23.4676 2.53211L22.1948 3.8049C22.6676 4.27769 22.9332 4.91893 22.9332 5.58756L24.7332 5.58756ZM23.4676 2.53211C22.6572 1.72176 21.5581 1.2665 20.4121 1.2665V3.0665C21.0807 3.0665 21.722 3.33211 22.1948 3.8049L23.4676 2.53211ZM20.4121 1.2665C19.2661 1.2665 18.167 1.72176 17.3567 2.53211L18.6295 3.8049C19.1023 3.33211 19.7435 3.0665 20.4121 3.0665V1.2665ZM17.3567 2.53211C16.5463 3.34247 16.0911 4.44154 16.0911 5.58756L17.8911 5.58756C17.8911 4.91893 18.1567 4.27769 18.6295 3.8049L17.3567 2.53211ZM16.0911 5.58756C16.0911 6.73357 16.5463 7.83265 17.3567 8.643L18.6295 7.37021C18.1567 6.89742 17.8911 6.25618 17.8911 5.58756H16.0911ZM17.3567 8.643C18.167 9.45336 19.2661 9.90861 20.4121 9.90861V8.10861C19.7435 8.10861 19.1023 7.843 18.6295 7.37021L17.3567 8.643ZM12.9998 2.40685H7.58317V4.20685H12.9998V2.40685ZM1.2665 8.72352V18.4165H3.0665V8.72352H1.2665ZM7.58317 24.7332H17.2762V22.9332H7.58317V24.7332ZM23.5928 18.4165V13.57H21.7928V18.4165H23.5928ZM17.2762 24.7332C20.7648 24.7332 23.5928 21.9051 23.5928 18.4165H21.7928C21.7928 20.911 19.7706 22.9332 17.2762 22.9332V24.7332ZM1.2665 18.4165C1.2665 21.9051 4.09457 24.7332 7.58317 24.7332V22.9332C5.08868 22.9332 3.0665 20.911 3.0665 18.4165H1.2665ZM7.58317 2.40685C4.09457 2.40685 1.2665 5.23492 1.2665 8.72352H3.0665C3.0665 6.22904 5.08868 4.20685 7.58317 4.20685V2.40685ZM7.58317 14.9832H12.9998V13.1832H7.58317V14.9832ZM7.58317 19.3165L17.3332 19.3165L17.3332 17.5165L7.58317 17.5165L7.58317 19.3165Z"
+                                              fill="#F59E0B"></path>
+                                      </svg>
+                                  </div>
+                                  <div class="ml-4 w-4/5">
+                                      <h5 class="text-gray-900 text-base mb-1.5 font-semibold">
+                                          Kurikulum
+                                      </h5>
+                                      <p class="text-xs font-medium text-gray-400">
+                                          Real time notification always keep you up to date in
+                                          realtime
+                                      </p>
+                                  </div>
+                              </a>
+                          </li>
+                          <li class="">
+                              <a href="javascript:;" class="px-3 py-5 hover:bg-gray-50 hover:rounded-xl flex transition-all duration-500">
+                                  <div class="rounded-lg w-12 h-12 flex justify-center">
+                                      <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                          <path
+                                              d="M7.58356 19.6624V17.4199M13.1303 19.6621V15.1771M18.6771 19.6625V12.9242M17.8752 7.0415C15.1127 10.2698 11.7111 12.4366 7.58356 13.4658M15.1669 6.49984H16.4169C17.3597 6.49984 17.8311 6.49984 18.124 6.79273C18.4169 7.08562 18.4169 7.55703 18.4169 8.49984V9.74984M10.167 2.1665H15.8336C19.6048 2.1665 21.4904 2.1665 22.662 3.33808C23.8336 4.50965 23.8336 6.39527 23.8336 10.1665L23.8336 15.8332C23.8336 19.6044 23.8336 21.49 22.662 22.6616C21.4904 23.8332 19.6048 23.8332 15.8336 23.8332L10.167 23.8332C6.39577 23.8332 4.51016 23.8332 3.33858 22.6616C2.16701 21.49 2.16701 19.6044 2.16701 15.8332L2.167 10.1665C2.167 6.39527 2.16699 4.50965 3.33857 3.33808C4.51014 2.1665 6.39576 2.1665 10.167 2.1665Z"
+                                              stroke="#10B981" stroke-width="1.8" stroke-linecap="round"></path>
+                                      </svg>
+                                  </div>
+                                  <div class="ml-4 w-4/5">
+                                      <h5 class="text-gray-900 text-base mb-1.5 font-semibold">
+                                          Data Guru/Pengajar
+                                          <!-- <span
+                        class="bg-indigo-50 text-indigo-500 text-xs font-medium mr-2 px-2.5 py-1 rounded-full h-5 ml-4">New</span> -->
+                                      </h5>
+                                      <p class="text-xs font-medium text-gray-400">
+                                          Analyze data to make more informed and accurate
+                                          business decision
+                                      </p>
+                                  </div>
+                              </a>
+                          </li>
+                          <li class="">
+                              <a href="javascript:;" class="px-3 py-5 hover:bg-gray-50 hover:rounded-xl flex transition-all duration-500">
+                                  <div class="rounded-lg w-12 h-12 flex justify-center">
+                                      <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                          <path
+                                              d="M16.239 18.9582H17.8748C21.1465 18.9582 23.8332 16.2823 23.8332 12.9998C23.8332 9.72817 21.1573 7.0415 17.8748 7.0415H16.239M9.74984 7.0415H8.12484C4.84234 7.0415 2.1665 9.71734 2.1665 12.9998C2.1665 16.2715 4.84234 18.9582 8.12484 18.9582H9.74984M8.6665 12.9998H17.3332"
+                                              stroke="#3B82F6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+                                      </svg>
+                                  </div>
+                                  <div class="ml-4 w-4/5">
+                                      <h5 class="text-gray-900 text-base mb-1.5 font-semibold">
+                                          E-Learning/E-Book
+                                      </h5>
+                                      <p class="text-xs font-medium text-gray-400">
+                                          Get started by taking advantage of integration with
+                                          other services
+                                      </p>
+                                  </div>
+                              </a>
+                          </li>
+                          <li class="">
+                              <a href="javascript:;" class="px-3 py-5 hover:bg-gray-50 hover:rounded-xl flex transition-all duration-500">
+                                  <div class="rounded-lg w-12 h-12 flex justify-center">
+                                      <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                          <path
+                                              d="M16.239 18.9582H17.8748C21.1465 18.9582 23.8332 16.2823 23.8332 12.9998C23.8332 9.72817 21.1573 7.0415 17.8748 7.0415H16.239M9.74984 7.0415H8.12484C4.84234 7.0415 2.1665 9.71734 2.1665 12.9998C2.1665 16.2715 4.84234 18.9582 8.12484 18.9582H9.74984M8.6665 12.9998H17.3332"
+                                              stroke="#3B82F6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+                                      </svg>
+                                  </div>
+                                  <div class="ml-4 w-4/5">
+                                      <h5 class="text-gray-900 text-base mb-1.5 font-semibold">
+                                          Kalender Akademik
+                                      </h5>
+                                      <p class="text-xs font-medium text-gray-400">
+                                          Get started by taking advantage of integration with
+                                          other services
+                                      </p>
+                                  </div>
+                              </a>
+                          </li>
+                      </ul>
+                      <ul class="text-sm text-gray-700 dark:text-gray-400" aria-labelledby="dropdownLargeButton">
+                          <h6 class="font-medium text-sm text-gray-500 mb-2  ml-5">
+                              Blog/Berita
+                          </h6>
+                          <li class="">
+                              <a href="javascript:;" class="px-3 py-5 hover:bg-gray-50 hover:rounded-xl flex transition-all duration-500">
+                                  <div class="rounded-lg w-12 h-12 flex justify-center">
+                                      <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                          <path
+                                              d="M12.4583 13.7427C13.9541 13.7427 15.1667 12.5301 15.1667 11.0343C15.1667 9.53856 13.9541 8.32599 12.4583 8.32599C10.9626 8.32599 9.75 9.53856 9.75 11.0343C9.75 12.5301 10.9626 13.7427 12.4583 13.7427ZM12.4583 13.7427V18.076M3.25 11.4628V13.2029C3.25 15.3284 3.25 16.3912 3.70714 17.3059C4.16428 18.2205 5.01425 18.8585 6.7142 20.1344L7.42948 20.6713C9.93426 22.5512 11.1866 23.4912 12.6319 23.4912C14.0772 23.4912 15.3296 22.5512 17.8344 20.6713L18.5497 20.1344C20.2496 18.8585 21.0996 18.2205 21.5567 17.3059C22.0139 16.3912 22.0139 15.3284 22.0139 13.2029V11.4628C22.0139 8.63125 22.0139 7.2155 21.2732 6.11722C20.5325 5.01895 19.2199 4.48846 16.5946 3.42749L15.8794 3.13842C14.2761 2.49048 13.4745 2.1665 12.6319 2.1665C11.7894 2.1665 10.9878 2.49048 9.38453 3.13842L8.66925 3.4275C6.04404 4.48846 4.73143 5.01895 3.99071 6.11722C3.25 7.2155 3.25 8.63125 3.25 11.4628Z"
+                                              stroke="#F43F5E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+                                      </svg>
+                                  </div>
+                                  <div class="ml-4 w-4/5">
+                                      <h5 class="text-gray-900 text-base mb-1.5 font-semibold">
+                                          Artikel Sekolah
+                                      </h5>
+                                      <p class="text-xs font-medium text-gray-400">
+                                          To ensure your privacy all information are highly
+                                          encrypted
+                                      </p>
+                                  </div>
+                              </a>
+                          </li>
+                          <li class="">
+                              <a href="javascript:;" class="px-3 py-5 hover:bg-gray-50 hover:rounded-xl flex transition-all duration-500">
+                                  <div class="rounded-lg w-12 h-12 flex justify-center">
+                                      <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                          <path
+                                              d="M6.5 14.0832H15.1667M6.5 17.3332H10.8333M14.8049 2.52753V7.22197C14.8049 8.41859 15.7749 9.38864 16.9715 9.38864H21.666M13.9081 2.1665H7.25C5.36438 2.1665 4.42157 2.1665 3.83579 2.75229C3.25 3.33808 3.25 4.28089 3.25 6.1665V21.6665C3.25 22.8631 4.22005 23.8332 5.41667 23.8332H18.0278C19.9134 23.8332 20.8562 23.8332 21.442 23.2474C22.0278 22.6616 22.0278 21.7188 22.0278 19.8332V10.2862C22.0278 9.71155 21.7995 9.16045 21.3932 8.75412L15.4402 2.80111C15.0338 2.39478 14.4827 2.1665 13.9081 2.1665Z"
+                                              stroke="#4F46E5" stroke-width="1.8" stroke-linecap="round"></path>
+                                      </svg>
+                                  </div>
+                                  <div class="ml-4 w-4/5">
+                                      <h5 class="text-gray-900 text-base mb-1.5 font-semibold">
+                                          Informasi Terkini
+                                      </h5>
+                                      <p class="text-xs font-medium text-gray-400">
+                                          Organized documentation will help you save tone of
+                                          your time
+                                      </p>
+                                  </div>
+                              </a>
+                          </li>
+                          <li class="">
+                              <a href="javascript:;" class="px-3 py-5 hover:bg-gray-50 hover:rounded-xl flex transition-all duration-500">
+                                  <div class="rounded-lg w-12 h-12 flex justify-center">
+                                      <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                          <path
+                                              d="M6.5 14.0832H15.1667M6.5 17.3332H10.8333M14.8049 2.52753V7.22197C14.8049 8.41859 15.7749 9.38864 16.9715 9.38864H21.666M13.9081 2.1665H7.25C5.36438 2.1665 4.42157 2.1665 3.83579 2.75229C3.25 3.33808 3.25 4.28089 3.25 6.1665V21.6665C3.25 22.8631 4.22005 23.8332 5.41667 23.8332H18.0278C19.9134 23.8332 20.8562 23.8332 21.442 23.2474C22.0278 22.6616 22.0278 21.7188 22.0278 19.8332V10.2862C22.0278 9.71155 21.7995 9.16045 21.3932 8.75412L15.4402 2.80111C15.0338 2.39478 14.4827 2.1665 13.9081 2.1665Z"
+                                              stroke="#4F46E5" stroke-width="1.8" stroke-linecap="round"></path>
+                                      </svg>
+                                  </div>
+                                  <div class="ml-4 w-4/5">
+                                      <h5 class="text-gray-900 text-base mb-1.5 font-semibold">
+                                          Event/Kegiatan
+                                      </h5>
+                                      <p class="text-xs font-medium text-gray-400">
+                                          Organized documentation will help you save tone of
+                                          your time
+                                      </p>
+                                  </div>
+                              </a>
+                          </li>
+                      </ul>
+                      <ul class="text-sm text-gray-700 dark:text-gray-400" aria-labelledby="dropdownLargeButton">
+                          <h6 class="font-medium text-sm text-gray-500 mb-2  ml-5">
+                              Jurnal/Projek
+                          </h6>
+                          <li class="">
+                              <a href="javascript:;" class="px-3 py-5 hover:bg-gray-50 hover:rounded-xl flex transition-all duration-500">
+                                  <div class="rounded-lg w-12 h-12 flex justify-center">
+                                      <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                          <path
+                                              d="M12.4583 13.7427C13.9541 13.7427 15.1667 12.5301 15.1667 11.0343C15.1667 9.53856 13.9541 8.32599 12.4583 8.32599C10.9626 8.32599 9.75 9.53856 9.75 11.0343C9.75 12.5301 10.9626 13.7427 12.4583 13.7427ZM12.4583 13.7427V18.076M3.25 11.4628V13.2029C3.25 15.3284 3.25 16.3912 3.70714 17.3059C4.16428 18.2205 5.01425 18.8585 6.7142 20.1344L7.42948 20.6713C9.93426 22.5512 11.1866 23.4912 12.6319 23.4912C14.0772 23.4912 15.3296 22.5512 17.8344 20.6713L18.5497 20.1344C20.2496 18.8585 21.0996 18.2205 21.5567 17.3059C22.0139 16.3912 22.0139 15.3284 22.0139 13.2029V11.4628C22.0139 8.63125 22.0139 7.2155 21.2732 6.11722C20.5325 5.01895 19.2199 4.48846 16.5946 3.42749L15.8794 3.13842C14.2761 2.49048 13.4745 2.1665 12.6319 2.1665C11.7894 2.1665 10.9878 2.49048 9.38453 3.13842L8.66925 3.4275C6.04404 4.48846 4.73143 5.01895 3.99071 6.11722C3.25 7.2155 3.25 8.63125 3.25 11.4628Z"
+                                              stroke="#F43F5E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+                                      </svg>
+                                  </div>
+                                  <div class="ml-4 w-4/5">
+                                      <h5 class="text-gray-900 text-base mb-1.5 font-semibold">
+                                          Jurnal Harian Siswa
+                                      </h5>
+                                      <p class="text-xs font-medium text-gray-400">
+                                          To ensure your privacy all information are highly
+                                          encrypted
+                                      </p>
+                                  </div>
+                              </a>
+                          </li>
+                          <li class="">
+                              <a href="javascript:;" class="px-3 py-5 hover:bg-gray-50 hover:rounded-xl flex transition-all duration-500">
+                                  <div class="rounded-lg w-12 h-12 flex justify-center">
+                                      <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                          <path
+                                              d="M6.5 14.0832H15.1667M6.5 17.3332H10.8333M14.8049 2.52753V7.22197C14.8049 8.41859 15.7749 9.38864 16.9715 9.38864H21.666M13.9081 2.1665H7.25C5.36438 2.1665 4.42157 2.1665 3.83579 2.75229C3.25 3.33808 3.25 4.28089 3.25 6.1665V21.6665C3.25 22.8631 4.22005 23.8332 5.41667 23.8332H18.0278C19.9134 23.8332 20.8562 23.8332 21.442 23.2474C22.0278 22.6616 22.0278 21.7188 22.0278 19.8332V10.2862C22.0278 9.71155 21.7995 9.16045 21.3932 8.75412L15.4402 2.80111C15.0338 2.39478 14.4827 2.1665 13.9081 2.1665Z"
+                                              stroke="#4F46E5" stroke-width="1.8" stroke-linecap="round"></path>
+                                      </svg>
+                                  </div>
+                                  <div class="ml-4 w-4/5">
+                                      <h5 class="text-gray-900 text-base mb-1.5 font-semibold">
+                                          Projek Kelas
+                                      </h5>
+                                      <p class="text-xs font-medium text-gray-400">
+                                          Organized documentation will help you save tone of
+                                          your time
+                                      </p>
+                                  </div>
+                              </a>
+                          </li>
+                          <li class="">
+                              <a href="javascript:;" class="px-3 py-5 hover:bg-gray-50 hover:rounded-xl flex transition-all duration-500">
+                                  <div class="rounded-lg w-12 h-12 flex justify-center">
+                                      <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                          <path
+                                              d="M6.5 14.0832H15.1667M6.5 17.3332H10.8333M14.8049 2.52753V7.22197C14.8049 8.41859 15.7749 9.38864 16.9715 9.38864H21.666M13.9081 2.1665H7.25C5.36438 2.1665 4.42157 2.1665 3.83579 2.75229C3.25 3.33808 3.25 4.28089 3.25 6.1665V21.6665C3.25 22.8631 4.22005 23.8332 5.41667 23.8332H18.0278C19.9134 23.8332 20.8562 23.8332 21.442 23.2474C22.0278 22.6616 22.0278 21.7188 22.0278 19.8332V10.2862C22.0278 9.71155 21.7995 9.16045 21.3932 8.75412L15.4402 2.80111C15.0338 2.39478 14.4827 2.1665 13.9081 2.1665Z"
+                                              stroke="#4F46E5" stroke-width="1.8" stroke-linecap="round"></path>
+                                      </svg>
+                                  </div>
+                                  <div class="ml-4 w-4/5">
+                                      <h5 class="text-gray-900 text-base mb-1.5 font-semibold">
+                                          Hasil Karya Siswa
+                                      </h5>
+                                      <p class="text-xs font-medium text-gray-400">
+                                          Organized documentation will help you save tone of
+                                          your time
+                                      </p>
+                                  </div>
+                              </a>
+                          </li>
+                      </ul>
+                  </div>
+                  <div class="bg-gray-50 p-8 lg:w-2/6">
+                      <h6 class="font-medium text-sm text-gray-500 mb-5">
+                          Latest News
+                      </h6>
+                      <div class="mb-6 relative">
+                          <img src="https://pagedone.io/asset/uploads/1700893615.png" alt="Latest News image" class="w-72 h-36" />
+                      </div>
+                      <div class="block">
+                          <h5 class="text-gray-900 text-base mb-1.5 font-semibold">
+                              Ease of Pagedone UI
+                          </h5>
+                          <p class="text-sm font-medium text-gray-400">
+                              Pagedone is one of the best easy to use page builder.
+                          </p>
+                          <a href="javascript:;" class="flex items-center mt-4 text-xs font-semibold text-indigo-600">Learn more
+                              <svg class="ml-2" width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path
+                                      d="M2 8L12.6667 8M9.33333 12L12.8619 8.4714C13.0842 8.24918 13.1953 8.13807 13.1953 8C13.1953 7.86193 13.0842 7.75082 12.8619 7.5286L9.33333 4"
+                                      stroke="#4F46E5" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path>
+                              </svg>
+                          </a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </li>
+
+      <!-- Right Action -->
+      <div class="flex items-center space-x-6">
+          <button class="bg-blue-700 text-white px-4 py-2 rounded-lg hover:bg-blue-950 hover:scale-110 transition-all duration-300">
+              Daftar SPMB
+          </button>
+          <button class="text-white text-xl hover:text-yellow-300 hover:scale-125 transition-all duration-300">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12.79A9 9 0 1111.21 3a7 7 0 109.79 9.79z" />
+              </svg>
+          </button>
+      </div>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section id="hero-section" class="w-full max-w-screen-2xl overflow-hidden pt-2 px-4 relative">
+  <div class="relative w-full rounded-3xl overflow-hidden">
+      <!-- Background Image -->
+      <img src="./Assets/BG/HeroBg.png" alt="Background" class="w-full object-cover object-center rounded-3xl shadow-[0px_35px_60px_-15px_rgba(0,0,0,0.3)]" />
+
+      <!-- Dark Blur Overlay (optional) -->
+      <div class="absolute inset-0 z-10 rounded-3xl hidden bg-black/50 backdrop-blur-[2px] pointer-events-none"></div>
+
+      <!-- Konten -->
+      <div class="absolute top-[33%] left-[8%] max-w-[90%] sm:max-w-[516px] z-20">
+          <h2 class="absolute -top-[28px] left-0 w-[425px] h-[37px] text-white text-[23px] leading-[28px] font-normal tracking-[-1px] font-[Poppins] ">
+              Informasi Pendaftaran Siswa Baru
+          </h2>
+
+          <h1 class="absolute top-4 left-0 w-[490px] h-[430px] text-white text-[78px] leading-[80px] tracking-[-2px] font-[Nunito]  font-semibold">
+              SMKS BINA <br />
+              SISWA 2 <br />
+              CILILIN
+          </h1>
+
+          <div class="absolute top-[18.5em] left-0 flex items-center gap-2 group cursor-pointer transition-all duration-300 hover:pl-5 ">
+              <h2 class="z-[10] text-white text-[15px] font-bold leading-[40px] whitespace-nowrap font-[Nunito] transition-all duration-300">
+                  INFORMASI PENDAFTARAN
+              </h2>
+              <img src="./Assets/Icon/misc/right-arrow.png"
+                  class="z-[10] w-5 filter invert transition-transform duration-300 group-hover:translate-x-1 animate-[arrowMove_2s_ease-in-out_infinite]" />
+
+              <span
+                  class="z-[1] absolute -bottom-[0.2em] left-0 w-[240px] h-[1.5px] bg-white rounded transition-all duration-300 group-hover:w-[269px] group-hover:h-[50px] origin-bottom group-hover:bg-blue-800">
+              </span>
+          </div>
+
+      </div>
+
+      <!-- Statistik -->
+      <div class="absolute bottom-[24px] left-[18.7em] w-full flex justify-center gap-10 z-30">
+          <!-- Card 1 -->
+          <div
+              class="rounded-xl px-6 py-2 flex flex-col items-center w-[180px] h-[150px] text-center [background-image:radial-gradient(closest-side_at_center,_rgba(255,255,255,0.82)_59%,_rgba(230,238,255,0.82)_100%)] shadow-[-1px_4px_4px_rgba(0,0,0,0.25)]">
+              <img src="./Assets/Icon/misc/murid_icon.gif" class="w-[75px] mb-2" alt="Pelajar" />
+              <div class="-mt-[10px] leading-[25px]">
+                  <p class="text-[20px] font-bold text-gray-800">422</p>
+                  <p class="text-[20px] font-semibold text-gray-800">PELAJAR</p>
+              </div>
+          </div>
+          <!-- Card 2 -->
+          <div
+              class="shadow-[-1px_4px_4px_rgba(0,0,0,0.25)] [background-image:radial-gradient(closest-side_at_center,_rgba(255,255,255,0.82)_59%,_rgba(230,238,255,0.82)_100%)] rounded-xl px-6 py-2 flex flex-col items-center w-[180px] h-[150px] text-center">
+              <img src="./Assets/Icon/misc/guru_icon.gif" class="w-[71px] mb-2" alt="Pengajar" />
+              <div class="-mt-[10px] leading-[25px]">
+                  <p class="text-[20px] font-bold text-gray-800">20</p>
+                  <p class="text-[20px] font-semibold text-gray-800">PENGAJAR</p>
+              </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div
+              class="shadow-[-1px_4px_4px_rgba(0,0,0,0.25)] [background-image:radial-gradient(closest-side_at_center,_rgba(255,255,255,0.82)_59%,_rgba(230,238,255,0.82)_100%)] rounded-xl px-6 py-2 flex flex-col items-center w-[180px] h-[150px] text-center">
+              <img src="./Assets/Icon/misc/class_icon.gif" class="w-[71px] mb-2" alt="Ruangan" />
+              <div class="-mt-[10px] leading-[25px]">
+                  <p class="text-[20px] font-bold text-gray-800">24</p>
+                  <p class="text-[20px] font-semibold text-gray-800">RUANGAN</p>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="w-full max-w-7xl mx-auto px-8 py-28 grid lg:grid-cols-2 gap-10 font-[League_Spartan]">
+
+  <!-- Gambar kiri-->
+  <div class="" data-aos="fade-right" data-aos-duration="1000">
+      <img src="./Assets/BG/1.jpeg" alt="Gedung SMK"
+          class=" transition-all duration-500 hover:scale-105 rounded-xl shadow-[-4px_12px_12px_rgba(0,0,0,0.25)] w-full h-[380px] object-cover" />
+  </div>
+
+  <!-- Kalimat kanan-->
+  <div class="flex flex-col justify-center items-center text-center -translate-y-4  " data-aos="fade-left" data-aos-duration="1000">
+      <h2 class="text-[33px] font-extrabold text-gray-900 mb-8 leading-4 uppercase ">
+          <span class="text-[20px] lowercase font-bold block"> Salam hangat dan selamat datang di website </span><br />
+          SMKS Bina Siswa 2 Cililin
+      </h2>
+      <p class="text-gray-800 text-[18px] leading-[25px]  translate-y-3 text-justify font-medium max-w-xl">
+          Selamat datang di platform digital sekolah kami! Jelajahi berbagai informasi penting, mulai dari jurusan,
+          kegiatan siswa, hingga prestasi dan fasilitas yang tersedia.
+          <br /><br />
+          Geser ke bawah untuk mengenal lebih jauh tentang sekolah kami, temukan jurusan yang sesuai, dan jangan ragu
+          untuk bergabung atau menghubungi kami. Mari bersama menciptakan pengalaman pendidikan terbaik untuk masa depan!
+      </p>
+  </div>
+</section>
+
+<!-- VISI & MISI Card -->
+<section class="w-full max-w-7xl mx-auto px-8 grid md:grid-cols-2 gap-8 pb-20 -translate-y-[60px] font-[League_Spartan] ">
+
+  <!-- Card VISI -->
+  <div data-aos="zoom-in-up" data-aos-duration="1000">
+      <div class="w-[590px] h-[180px] text-white rounded-xl shadow-[-4px_12px_12px_rgba(0,0,0,0.25)] py-5 px-7 transition-all duration-300 transform hover:scale-105 hover:brightness-110 hover:shadow-xl"
+          style="background-image: var(--gradient-main);">
+
+          <div class="flex items-center space-x-3 mb-1">
+              <img src="./Assets/Icon/misc/binoculars.png" alt="Ikon Visi" class="w-10">
+              <h3 class="font-bold tracking-widest uppercase text-[20px] -translate-x-3">Visi</h3>
+          </div>
+
+          <p class="text-[17px] leading-relaxed text-justify pl-4 pr-3">
+              Menjadi salah satu SMK yang unggul dalam bidang olahraga, ilmu, dan kesenian serta dapat menghasilkan peserta
+              didik profesional dan mampu memanfaatkan peluang kerja di era globalisasi.
+          </p>
+      </div>
+  </div>
+
+  <!-- Card MISI -->
+  <div data-aos="zoom-in-up" data-aos-duration="1000" data-aos-delay="200">
+      <div class="w-[600px] h-[250px] -translate-y-[70px] ml-2 rounded-xl shadow-[-4px_12px_12px_rgba(0,0,0,0.25)] p-7 transition-all duration-300 transform hover:scale-105 hover:brightness-110 hover:shadow-xl"
+          style="background-image: var(--gradient-accent);">
+
+          <div class=" -translate-y-[7px]">
+              <!-- Header Icon + Title -->
+              <div class="flex items-center space-x-3 mb-2">
+                  <img src="./Assets/Icon/misc/mission-statement.png" alt="Ikon Misi" class="w-8">
+                  <h3 class="font-bold tracking-widest uppercase text-[20px] -translate-x-3 text-gray-900">Misi</h3>
+              </div>
+
+              <!-- List Misi -->
+              <ul class="space-y-1 text-[17px] leading-relaxed pl-4 pr-3 text-gray-800 font-medium">
+                  <li class="flex items-start gap-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-8 h-8 text-gray-800 mt-1" viewBox="0 0 20 20">
+                          <path fill-rule="evenodd"
+                              d="M7.293 13.293a1 1 0 011.414 0l5.586-5.586a1 1 0 00-1.414-1.414L8 11.172 6.707 9.879a1 1 0 00-1.414 1.414l2 2z"
+                              clip-rule="evenodd" />
+                      </svg>
+                      <span>Mempersiapkan lulusan yang berkompeten dan mempunyai keahlian.</span>
+                  </li>
+
+                  <li class="flex items-start gap-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-8 h-8 text-gray-800 mt-1" viewBox="0 0 20 20">
+                          <path fill-rule="evenodd"
+                              d="M7.293 13.293a1 1 0 011.414 0l5.586-5.586a1 1 0 00-1.414-1.414L8 11.172 6.707 9.879a1 1 0 00-1.414 1.414l2 2z"
+                              clip-rule="evenodd" />
+                      </svg>
+                      <span>Mempersiapkan lulusan yang mampu bekerja di dunia usaha dan industri.</span>
+                  </li>
+
+                  <li class="flex items-start gap-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-8 h-8 text-gray-800 " viewBox="0 0 20 20">
+                          <path fill-rule="evenodd"
+                              d="M7.293 13.293a1 1 0 011.414 0l5.586-5.586a1 1 0 00-1.414-1.414L8 11.172 6.707 9.879a1 1 0 00-1.414 1.414l2 2z"
+                              clip-rule="evenodd" />
+                      </svg>
+                      <span>Mempersiapkan lulusan yang menguasai IPTEX dan IMTAQ.</span>
+                  </li>
+              </ul>
+          </div>
+      </div>
+  </div>
+
+</section>
+
+
+<!-- JURUSAN -->
+<section class="w-full py-10 bg-white text-center font-[League_Spartan] -translate-y-[20px]">
+  <!-- Heading -->
+  <div class="mb-16" data-aos="fade-up" data-aos-duration="800">
+      <h2 class="text-[33px] font-extrabold text-gray-900 mb-5 leading-4 uppercase">Program Keahlian</h2>
+      <p class="mt-2 text-gray-600 text-[16px] leading-[23px]">
+          SMK Bina Siswa 2 Cililin menawarkan program keahlian unggulan yang dirancang untuk<br />
+          mempersiapkan siswa menjadi tenaga kerja siap pakai dan profesional di bidangnya masing-masing.
+      </p>
+  </div>
+
+  <!-- Ikon dan Nama Jurusan -->
+  <div class="relative w-full max-w-4xl mx-auto flex items-center justify-center">
+
+      <!-- AOS Wrapper Ikon kiri -->
+      <div data-aos="zoom-in-up" data-aos-delay="100">
+          <div class="transform translate-x-[-80px] translate-y-[20px] transition-transform duration-300 hover:scale-105 cursor-pointer hover:brightness-110">
+              <div class="w-32 h-32 rounded-full bg-[#2F71DC] border-[7px] border-[#1F2937] shadow-soft flex items-center justify-center">
+                  <img src="./Assets/Icon/TSM_ICON.png" alt="Icon Kiri" class="w-[5rem]">
+              </div>
+          </div>
+      </div>
+
+      <!-- AOS Wrapper Ikon tengah -->
+      <div data-aos="zoom-in-up" data-aos-delay="250">
+          <div class="z-10 transform translate-y-[-20px] group scale-110 relative">
+              <!-- Lingkaran Ikon Tengah -->
+              <div
+                  class="w-36 h-36 rounded-full bg-[#2F71DC] border-[7px] border-[#19212c] shadow-soft flex items-center justify-center transition-transform duration-300 hover:scale-105 cursor-pointer hover:brightness-110">
+                  <img src="./Assets/Icon/TKJ_ICON.png" alt="Icon Tengah" class="w-[5rem]">
+              </div>
+          </div>
+
+          <div data-aos="zoom-in-up" data-aos-delay="250">
+
+              <!-- Garis vertikal dotted -->
+              <div
+                  class="transition-transform group-hover:mt-1 absolute left-1/2 transform -translate-x-1/2 top-full h-10 w-[2px] border-l-2 border-dotted border-blue-600">
+              </div>
+
+              <div
+                  class="absolute left-[79px] transform -translate-x-1/2 top-full mt-[48px] w-4 h-4 bg-[#2F71DC] rounded-full shadow-md group-hover:brightness-150">
+              </div>
+          </div>
+      </div>
+
+
+      <!-- AOS Wrapper Ikon kanan -->
+      <div data-aos="zoom-in-up" data-aos-delay="400">
+          <div class="transform translate-x-[80px] translate-y-[20px] transition-transform duration-300 hover:scale-105 cursor-pointer hover:brightness-110">
+              <div class="w-32 h-32 rounded-full bg-[#2F71DC] border-[7px] border-[#1F2937] shadow-soft flex items-center justify-center">
+                  <img src="./Assets/Icon/BISNIS_ICONS.png" alt="Icon Kanan" class="w-[5rem]">
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <!-- Nama Jurusan -->
+  <div data-aos="fade-in" data-aos-delay="200">
+      <h3 class="mt-[80px] text-[20px] font-bold text-gray-800 font-[Inter] rounded-xl">
+          TEKNIK KOMPUTER JARINGAN
+      </h3>
+  </div>
+
+  <!-- Deskripsi Card -->
+  <div data-aos="fade-up" data-aos-delay="300">
+      <div style="background-image: var(--gradient-main)" class="mt-6 max-w-3xl w-[700px] mx-auto text-white p-8 rounded-xl shadow-medium text-[14px] font-medium font-inter
+        transition-all duration-300 hover:scale-105 hover:brightness-105">
+          Jurusan Teknik Jaringan Komputer dan Telekomunikasi (TJKT) di
+          <span class="font-bold">SMK BINA SISWA 2 CILILIN</span>
+          membekali siswa dengan keahlian paling dicari industri, mulai dari instalasi dan konfigurasi jaringan (LAN/WiFi),
+          infrastruktur perusahaan, administrasi server & keamanan siber, troubleshooting hardware/software,
+          hingga persiapan sertifikasi kompetensi nasional.
+      </div>
+  </div>
+</section>
+
+
+
+<!-- RUANGAN -->
+<section class="w-full max-w-7xl  mx-auto px-8  py-16 font-[League_Spartan] ">
+  <div class="grid grid-cols-6 auto-rows-[200px] gap-4">
+
+      <!-- CARD 1: Lab Jaringan -->
+      <div data-aos="fade-up" data-aos-duration="1000"
+          class="  relative col-span-4 row-span-2 rounded-2xl overflow-hidden group shadow-soft transform transition duration-700 will-change-transform">
+          <img src="./Assets/ROOM/Labjaringan.jpg"
+              class="absolute inset-0 w-full h-full object-cover object-center z-0 transition duration-500 group-hover:scale-105 group-hover:blur-[2px]" />
+          <div class="relative z-10 p-6 flex flex-col justify-end h-full bg-black/50 group-hover:bg-black/70 transition text-white">
+              <h2 class="text-2xl font-bold mb-1">🛠️ Laboratorium Jaringan & IT</h2>
+              <p class="text-sm text-gray-200">blub blub blub blub blub blub blub blub blub blub blub blub?</p>
+          </div>
+          <div class="neon-trace" id="neon-card-1">
+              <div class="neon-line line-top"></div>
+              <div class="neon-line line-right"></div>
+              <div class="neon-dot"></div>
+          </div>
+      </div>
+
+      <!-- CARD 2: Bengkel -->
+      <div data-aos="fade-up" data-aos-duration="1000" class="relative col-span-2 rounded-2xl overflow-hidden group shadow-soft">
+          <img src="./Assets/ROOM/Bengkel-transformed.jpeg"
+              class="absolute inset-0 w-full h-full object-cover object-center z-0 transition duration-500 group-hover:scale-105 group-hover:blur-[2px]" />
+          <div class="relative z-10 p-5 flex flex-col justify-end h-full bg-black/50 group-hover:bg-black/70 transition text-white">
+              <h2 class="text-xl font-semibold">🔧 Bengkel Teknik & Elektrik</h2>
+              <p class="text-sm text-gray-200">blub blub blub blub blub blub. blub blub blub blub blub blub!</p>
+          </div>
+      </div>
+
+      <!-- CARD 3: Lab Perakitan -->
+      <div data-aos="fade-up" data-aos-duration="1000" class="relative col-span-2 rounded-2xl overflow-hidden group shadow-soft">
+          <img src="./Assets/ROOM/Labperakitan-transformed.jpeg"
+              class="absolute inset-0 w-full h-full object-cover object-center z-0 transition duration-500 group-hover:scale-105 group-hover:blur-[2px]" />
+          <div class="relative z-10 p-5 flex flex-col justify-end h-full bg-black/50 group-hover:bg-black/70 transition text-white">
+              <h2 class="text-xl font-semibold">💻 Lab Perakitan PC & Hardware</h2>
+              <p class="text-sm text-gray-200">blub blub blub blub blub blub blub blub blub blub blub blub.</p>
+          </div>
+      </div>
+
+      <!-- CARD 4: Lab Komputer -->
+      <div data-aos="fade-up" data-aos-duration="1000" class="relative col-span-2 rounded-2xl overflow-hidden group shadow-soft">
+          <img src="./Assets/ROOM/Labkom.jpg"
+              class="absolute inset-0 w-full h-full object-cover object-center z-0 transition duration-500 group-hover:scale-105 group-hover:blur-[2px]" />
+          <div class="relative z-10 p-6 flex flex-col justify-end h-full bg-black/50 group-hover:bg-black/70 transition text-white">
+              <h2 class="text-xl font-semibold">🖥️ Laboratorium Komputer</h2>
+              <p class="text-sm text-gray-200">blub blub blub blub blub blub blub blub blub blub blub blub.</p>
+          </div>
+      </div>
+
+      <!-- CARD 6: Perpustakaan -->
+      <div data-aos="fade-up" data-aos-duration="1000" class="relative col-span-4 row-span-2 rounded-2xl overflow-hidden group shadow-soft">
+          <img src="./Assets/ROOM/Perpustakaan-transformed.jpeg"
+              class="absolute inset-0 w-full h-full object-cover object-center z-0 transition duration-500 group-hover:scale-105 group-hover:blur-[2px]" />
+          <div
+              class="relative z-10 p-6 flex flex-col justify-center items-center text-center h-full bg-black/50 group-hover:bg-black/70 transition text-white">
+              <h2 class="text-2xl font-bold mb-1">📚 Perpustakaan & Study Lounge</h2>
+              <p class="text-sm text-gray-200 max-w-md">blub blub blub blub blub blub blub blub blub blub blub blub</p>
+          </div>
+          <div class="neon-trace" id="neon-card-6">
+              <div class="neon-line line-top"></div>
+              <div class="neon-line line-right"></div>
+              <div class="neon-dot"></div>
+          </div>
+      </div>
+
+      <!-- CARD 5: Lapangan -->
+      <div data-aos="fade-up" data-aos-duration="1000" class="relative col-span-2 rounded-2xl overflow-hidden group shadow-soft">
+          <img src="./Assets/ROOM/Lapangan-transformed.jpeg"
+              class="absolute inset-0 w-full h-full object-cover object-center z-0 transition duration-500 group-hover:scale-105 group-hover:blur-[2px]" />
+          <div class="relative z-10 p-5 flex flex-col justify-end h-full bg-black/50 group-hover:bg-black/70 transition text-white">
+              <h2 class="text-xl font-semibold">🏟️ Lapangan Serbaguna & Outdoor</h2>
+              <p class="text-sm text-gray-200">blub blub blub blub blub blub</p>
+          </div>
+      </div>
+
+  </div>
+</section>
+
+
+
+<!-- SPMB -->
+<section id="SPMB" class="py-16">
+  <header
+      class="relative h-[360px] bg-fixed bg-no-repeat bg-cover flex items-center justify-center md:[background-position: 55% center;background-size: 120%;] "
+      style="background-image: url('./Assets/BG/1.jpeg');">
+      <div class="bg-black/50 w-full h-full absolute inset-0 z-0"></div>
+      <div class="absolute inset-0 flex flex-col items-center justify-center text-white text-center">
+          <h1 class="text-4xl font-bold tracking-wide">SPMB</h1>
+          <p class="text-xl mt-2 font-[League_Spartan]">Sistem Penerimaan Murid Baru<br />tahun ajaran 2025/2026</p>
+          <button class="mt-4 px-6 py-2 bg-[#2F71DC] rounded-full font-semibold">Join To Us</button>
+
+          <div class="mt-4 animate-bounce">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+              </svg>
+          </div>
+      </div>
+  </header>
+
+  <main class="relative z-10 max-w-6xl mx-auto -mt-16 bg-white rounded-xl shadow-medium p-10">
+      <section class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-900">Biaya Terjangkau, Fasilitas Maksimal</h2>
+          <p class="text-gray-600 mt-2 max-w-2xl mx-auto">
+              Kami menyediakan pilihan pendaftaran dengan harga terjangkau untuk semua kalangan. Dapatkan fasilitas terbaik, proses mudah, dan transparansi
+              biaya tanpa ribet.
+          </p>
+      </section>
+
+      <section class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+          <div class="p-6 rounded-lg border border-gray-200 shadow-soft bg-white">
+              <h3 class="text-xl font-bold text-gray-800 mb-1">Gelombang I</h3>
+              <p class="text-base text-gray-700 font-medium mb-1">Buka pendaftaran 1 Maret – 30 April 2025</p>
+              <p class="text-sm text-gray-600 mb-4">Khusus pendaftar <span class="text-[#2F71DC] font-semibold">awal</span> akan mendapatkan potongan biaya
+                  masuk hingga:</p>
+              <div class="flex items-baseline space-x-2">
+                  <span class="text-4xl font-extrabold text-[#2F71DC]">50%</span>
+                  <span class="text-sm text-gray-800 font-medium">DSG</span>
+              </div>
+              <button class="mt-4 bg-[#2F71DC] text-white px-6 py-2 rounded-md font-semibold">Daftar Sekarang</button>
+          </div>
+
+          <div class="p-6 rounded-lg border border-gray-200 shadow-soft bg-white">
+              <h3 class="text-xl font-bold text-gray-800 mb-1">Gelombang II</h3>
+              <p class="text-base text-gray-700 font-medium mb-1">Buka pendaftaran 1 Maret – 30 April 2025</p>
+              <p class="text-sm text-gray-600 mb-4">Khusus pendaftar <span class="text-[--color-accent] font-semibold">awal</span> akan mendapatkan potongan
+                  biaya masuk hingga:</p>
+              <div class="flex items-baseline space-x-2">
+                  <span class="text-4xl font-extrabold text-[--color-accent]">50%</span>
+                  <span class="text-sm text-gray-800 font-medium">DSG</span>
+              </div>
+              <button class="mt-4 bg-accent text-white px-6 py-2 rounded-md font-semibold">Daftar Sekarang</button>
+          </div>
+      </section>
+
+      <section class="p-6 rounded-lg     bg-white">
+          <h2 class="text-xl font-bold text-center text-gray-800 mb-6 tracking-wide">FASILITAS & KEUNGGULAN</h2>
+          <div class=" grid grid-cols-2 md:grid-cols-2 gap-8 md:gap-[25rem] text-sm text-gray-700">
+              <ul class="list-disc list-inside space-y-2 text-left  md:ml-10 md:w-80">
+                  <li>Praktik langsung di lab komputer dan bengkel teknik lengkap</li>
+                  <li>Program magang industri di perusahaan nasional dan lokal</li>
+                  <li>Sertifikasi kompetensi & pelatihan wirausaha</li>
+                  <li>Kegiatan ekstrakurikuler produktif & kompetitif</li>
+              </ul>
+              <ul class="list-disc list-inside space-y-2 text-left ">
+                  <li><strong class="text-[--color-accent]">BEBAS UANG PRAKTEK 1 TAHUN</strong></li>
+                  <li>Sekolah pagi hari (jam 7.00 – 12.00 WIB)</li>
+                  <li>Belajar Senin – Jumat, Sabtu libur</li>
+                  <li>DLL</li>
+              </ul>
+          </div>
+      </section>
+
+  </main>
+</section>
+
+
+<!-- EKSKUL -->
+<section id="EKSKUL" class="w-full max-w-7xl mx-auto px-8 py-16 font-[League_Spartan]">
+  <header class="text-center mb-24">
+      <h2 class="text-3xl font-bold mb-2">BUKAN SEKADAR EKSKUL BIASA!</h2>
+      <p class="text-gray-500 max-w-xl mx-auto">
+          Eksplor 12 ekskul di SMK Bina Siswa 2 Cililin dan temukan passion terbaikmu!
+      </p>
+  </header>
+
+  <div id="eksul-wrapper" class=" py-5  md:py-5 transition-all duration-500 flex justify-center">
+      <div id="eksul-layout" class="flex flex-col md:flex-row  lg:gap-28  items-center justify-center">
+
+          <!-- Lingkaran Ekskul -->
+          <div id="eksul-circle-container" class="flex justify-center w-full md:w-auto order-1 pb-10 md:pb-0">
+              <div id="eksul-circle-wrapper" class="relative w-[400px] sm:w-[450px] lg:w-[500px] aspect-square flex items-center justify-center">
+
+                  <!-- Outer Ring -->
+                  <div id="outer-ring" class="absolute inset-0 rounded-full border-[2px] border-dashed border-[#1CA4FF] z-0 animate-spin-slow"></div>
+
+                  <!-- Inner Ring -->
+                  <div id="inner-ring"
+                      class="absolute w-[280px] md:w-[300px] lg:w-[350px] aspect-square rounded-full border-[2px] border-dashed border-[#1CA4FF] z-0 animate-spin-reverse-slow">
+                  </div>
+
+                  <!-- Center Card -->
+                  <div id="center-info"
+                      class="relative w-[150px] sm:w-[170px] md:w-[200px] lg:w-[220px] aspect-square bg-white rounded-full shadow-soft flex flex-col items-center justify-center text-center z-10 cursor-pointer hover:scale-105 transition">
+                      <div class="w-14 sm:w-16 md:w-20 lg:w-20 aspect-square rounded-full gradient-main flex items-center justify-center shadow-inner mb-2">
+                          <i id="center-icon" class="fa-solid fa-laptop-code text-white text-[28px] md:text-[38px] lg:text-[40px]"></i>
+                      </div>
+                      <h1 id="center-title" class="font-semibold text-[20px] md:text-[28px] text-gray-800">HISSTIK</h1>
+                      <p id="center-subtitle" class="text-[15px] md:text-[20px] text-gray-500 -mt-1">IT Club</p>
+                  </div>
+              </div>
+          </div>
+
+          <!-- Card Ekskul Deskriptip -->
+          <div id="eksul-description-card"
+              class="hidden mt-10  md:mt-0 max-w-md w-full rounded-2xl overflow-hidden shadow-soft bg-white transition-all duration-500 md:order-2">
+              <img src="./Assets/ROOM/Labkom.jpg" alt="HISSTIK Ekskul" class="w-full h-56 object-cover object-center">
+              <div class="p-6">
+                  <h1 class="text-2xl font-bold text-gray-800 mb-2">HISSTIK - IT Club</h1>
+                  <p class="text-gray-600 text-base leading-relaxed">
+                      HISSTIK adalah ekstrakurikuler teknologi informasi yang berfokus pada pengembangan skill programming,
+                      desain UI/UX, dan jaringan komputer. Cocok untuk kamu yang ingin jadi hacker baik!
+                  </p>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+
+
+
+<!-- VIDEO -->
+<section id="video" class="relative w-full h-[300px] md:h-[400px] lg:h-[450px] overflow-hidden rounded-2xl my-12 shadow-xl group">
+  <video id="videoBG" autoplay muted loop playsinline
+      class="absolute w-full h-full object-cover pointer-events-none select-none transition-opacity duration-700">
+      <source src="./Assets/Video/videosection.mp4" type="video/mp4">
+      Browser kamu tidak mendukung pemutaran video.
+  </video>
+
+  <div id="videoInset" class="absolute inset-0 bg-black/40 backdrop-blur-sm"></div>
+  <div id="videoOverlay" class="absolute inset-0 bg-black/0 transition-all duration-1000 pointer-events-none z-20"></div>
+
+  <div id="videoTextContainer" class="relative z-30 flex items-center justify-center h-full text-center px-4">
+      <button id="videoRestartBtn"
+          class="hidden absolute z-40 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2   hover:bg-white text-white font-semibold px-6 py-3 rounded-full shadow-lg transition-all duration-300">
+          ▶ Mulai Ulang
+      </button>
+
+  </div>
+</section>
+
+
+
+<!-- NEWS -->
+<!-- MAPS -->
+<!-- FOOTHER -->
+
+<!-- Floating Chat Button -->
+<div class="fixed bottom-5 right-5 z-50">
+  <button id="chatToggle" class="bg-blue-600 hover:bg-blue-700 text-white p-4 rounded-full shadow-lg transition">
+      💬
+  </button>
+</div>
+<!-- Chat Box -->
+<div id="chatBox" class="fixed bottom-20 right-5 w-80 bg-white shadow-xl rounded-xl overflow-hidden border border-gray-300 hidden z-50">
+  <!-- Header -->
+  <div class="bg-blue-600 text-white p-4 flex justify-between items-center">
+      <span class="font-bold">Live Chat</span>
+      <button id="closeChat" class="text-white text-sm">✖</button>
+  </div>
+
+  <!-- Body -->
+  <div id="chatMessages" class="p-4 h-64 overflow-y-auto text-sm text-gray-700 space-y-2 bg-gray-50">
+      <div class="bg-white p-2 rounded-lg shadow-sm max-w-[70%]">Halo! Ada yang bisa dibantu?</div>
+  </div>
+
+  <!-- Input -->
+  <div class="p-3 border-t bg-white flex items-center">
+      <input id="chatInput" type="text" placeholder="Tulis pesan..."
+          class="flex-1 px-3 py-2 text-sm border rounded-l-md focus:outline-none focus:ring-2 focus:ring-blue-400">
+      <button id="sendBtn" class="bg-blue-600 text-white px-4 py-2 rounded-r-md hover:bg-blue-700">Kirim</button>
+  </div>
+</div>
+
+
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/pagedone@1.2.2/src/js/pagedone.js"></script>
+<script src="https://kit.fontawesome.com/e5598af084.js" crossorigin="anonymous"></script>
+
+<script>
+    AOS.init();
+</script>
+
+<!-- SCRIPT VIDEO SECTION -->
+  <script>
+    const texts = [
+      {
+        title: "Cerita Dimulai dari Sini",
+        subtitle: "Satu kilasan atmosfer, semangat, dan ruang tempat para pembelajar masa depan tumbuh.",
+        position: "center"
+      },
+      {
+        title: "Ruang yang Menyalakan Potensi",
+        subtitle: "Teknologi, kreativitas, dan semangat muda berpadu jadi satu.",
+        position: "left-top"
+      },
+      {
+        title: "Belajar, Tumbuh, Beraksi",
+        subtitle: "Tempat ide berkembang dan mimpi dilatih jadi aksi nyata.",
+        position: "left-bottom"
+      },
+      {
+        title: "Lebih dari Sekadar Sekolah",
+        subtitle: "Di sini, pengalaman jadi pelajaran — dan pelajaran jadi kekuatan.",
+        position: "center"
+      },
+    ];
+  
+    let currentIndex = 0;
+    let textTimeout = null;
+    let hasFinishedTexts = false;
+    let lastTime = 0;
+  
+    const container = document.getElementById("videoTextContainer");
+    const video = document.getElementById("videoBG");
+    const inset = document.getElementById("videoInset");
+  
+    function setText(index) {
+      const { title, subtitle, position } = texts[index];
+  
+      let positionClass = "";
+      switch (position) {
+        case "center":
+          positionClass = "items-center justify-center text-center";
+          break;
+        case "left-top":
+          positionClass = "items-start justify-start text-left pl-6 pt-6";
+          break;
+        case "left-bottom":
+          positionClass = "items-end justify-start text-left pl-6 pb-6";
+          break;
+      }
+  
+      container.className = `relative z-30 flex h-full w-full absolute transition-all duration-700 ${positionClass}`;
+      container.innerHTML = `
+        <div class="text-white animate-fadeIn">
+          <h2 class="text-xl md:text-3xl font-semibold drop-shadow-md">
+            ${title}
+          </h2>
+          <p class="text-sm md:text-base mt-2 text-gray-200 drop-shadow-sm">
+            ${subtitle}
+          </p>
+        </div>
+      `;
+  
+      if (index + 1 < texts.length) {
+        textTimeout = setTimeout(() => {
+          currentIndex++;
+          setText(currentIndex);
+        }, 3000);
+      } else {
+        hasFinishedTexts = true;
+        setTimeout(() => {
+          container.innerHTML = "";
+          inset?.classList.add("hidden");
+        }, 3000);
+      }
+    }
+  
+    // Inject fade animation
+    const style = document.createElement('style');
+    style.innerHTML = `
+      @keyframes fadeIn {
+        0% { opacity: 0; transform: scale(0.95); }
+        100% { opacity: 1; transform: scale(1); }
+      }
+      .animate-fadeIn {
+        animation: fadeIn 1s ease forwards;
+      }
+    `;
+    document.head.appendChild(style);
+  
+    // Saat video mulai play
+    video.addEventListener("play", () => {
+      if (!hasFinishedTexts) {
+        currentIndex = 0;
+        inset?.classList.remove("hidden");
+        clearTimeout(textTimeout);
+        setText(currentIndex);
+      }
+    });
+  
+    // Deteksi replay manual
+    video.addEventListener("timeupdate", () => {
+      if (video.currentTime < lastTime && hasFinishedTexts) {
+        clearTimeout(textTimeout);
+        currentIndex = 0;
+        hasFinishedTexts = false;
+        inset?.classList.remove("hidden");
+        setText(currentIndex);
+      }
+      lastTime = video.currentTime;
+    });
+  
+
+
+    // VIDEO SHADOW SCROLL DETECTOR
+    const videoSection = document.getElementById("video");
+    const shadowOverlay = document.getElementById("videoOverlay");
+  
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          shadowOverlay.classList.replace("bg-black/100", "bg-black/0");
+          video.currentTime = 0;
+          video.play();
+        } else {
+          shadowOverlay.classList.replace("bg-black/0", "bg-black/100");
+          video.pause();
+        }
+      },
+      { threshold: 0.6 }
+    );
+  
+    observer.observe(videoSection);
+
+
+
+
+// AUTO PAUSE & TOMBOL DI DETIK 80
+let stopTimeout = null;
+let hasStoppedAt80 = false;
+const restartBtn = document.getElementById("videoRestartBtn");
+
+video.addEventListener("timeupdate", () => {
+  // Deteksi replay manual 
+  if (video.currentTime < lastTime && hasFinishedTexts) {
+    clearTimeout(textTimeout);
+    clearTimeout(stopTimeout);
+    currentIndex = 0;
+    hasFinishedTexts = false;
+    hasStoppedAt80 = false;
+    inset?.classList.remove("hidden");
+    restartBtn.classList.add("opacity-0", "pointer-events-none");
+    setText(currentIndex);
+  }
+
+  if (video.currentTime >= 80 && !hasStoppedAt80) {
+    hasStoppedAt80 = true;
+    video.pause();
+    shadowOverlay.classList.replace("bg-black/0", "bg-black/100");
+
+    restartBtn.classList.remove("opacity-0", "pointer-events-none");
+  }
+
+  lastTime = video.currentTime;
+});
+
+restartBtn.addEventListener("click", () => {
+  restartBtn.classList.add("opacity-0", "pointer-events-none");
+
+  // Reset video & teks
+  shadowOverlay.classList.replace("bg-black/100", "bg-black/0");
+  video.currentTime = 0;
+  video.play();
+
+  clearTimeout(textTimeout);
+  currentIndex = 0;
+  hasFinishedTexts = false;
+  hasStoppedAt80 = false;
+  inset?.classList.remove("hidden");
+  setText(currentIndex);
+});
+
+  </script>
+
+<!-- SCRIPT EKSKUL SECTION-->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const centerInfo = document.getElementById("center-info");
+    const wrapper = document.getElementById("eksul-layout");
+    const card = document.getElementById("eksul-description-card");
+
+    const outerContainer = document.getElementById("outer-ring");
+    const innerContainer = document.getElementById("inner-ring");
+
+    const icons = [{
+            icon: "fa-laptop-code",
+            label: "HISSTIK"
+        },
+        {
+            icon: "fa-flask",
+            label: "Science Club"
+        },
+        {
+            icon: "fa-flag",
+            label: "Paskibra"
+        },
+        {
+            icon: "fa-heart",
+            label: "PMR"
+        },
+        {
+            icon: "fa-music",
+            label: "Musik"
+        },
+        {
+            icon: "fa-film",
+            label: "Multimedia"
+        },
+        {
+            icon: "fa-globe",
+            label: "English Club"
+        },
+        {
+            icon: "fa-volleyball",
+            label: "Voli"
+        },
+        {
+            icon: "fa-basketball",
+            label: "Basket"
+        },
+        {
+            icon: "fa-futbol",
+            label: "Futsal"
+        },
+        {
+            icon: "fa-drum",
+            label: "Seni Tari"
+        },
+        {
+            icon: "fa-user-ninja",
+            label: "Pramuka"
+        }
+    ];
+
+    let expanded = false;
+
+    // PAUSE ICON ROTATION
+    const pauseIconAnimations = () => {
+        document.querySelectorAll('.icon-wrapper-outer, .icon-wrapper-inner')
+            .forEach(el => el.style.animationPlayState = 'paused');
+    };
+
+    // PLAY FROM START
+    const resetAnimations = () => {
+        document.querySelectorAll('.icon-wrapper-outer').forEach(el => {
+            el.style.animation = 'none';
+            el.offsetHeight;
+            el.style.animation = "rotateCounter 30s linear infinite";
+        });
+        document.querySelectorAll('.icon-wrapper-inner').forEach(el => {
+            el.style.animation = 'none';
+            el.offsetHeight;
+            el.style.animation = "rotateClockwise 45s linear infinite";
+        });
+    };
+
+    // EXPAND DAN RENDER
+    centerInfo.addEventListener("click", () => {
+        if (!expanded) {
+            pauseIconAnimations();
+            wrapper.classList.add("md:grid");
+            wrapper.classList.remove("flex");
+            wrapper.classList.add("grid-cols-1", "md:grid-cols-2");
+            card.classList.remove("hidden");
+
+            setTimeout(() => {
+                renderIcons();
+                resetAnimations();
+            }, 300);
+        }
+        expanded = true;
+    });
+
+
+
+
+    // ICON RENDERER
+    function renderIcons() {
+        // Ambil ukuran diameter ring luar dan ring dalam
+        const ringSize = outerContainer.offsetWidth;
+        const innerSize = innerContainer.offsetWidth;
+
+        // Jika ukurannya belum ter-render (biasanya pas awal load), tunggu frame berikutnya
+        if (ringSize < 50 || innerSize < 50) {
+            requestAnimationFrame(renderIcons);
+            return;
+        }
+
+        // Bersihkan elemen sebelumnya di ring
+        outerContainer.innerHTML = "";
+        innerContainer.innerHTML = "";
+
+        // Hitung pusat lingkaran dari diameter ring
+        const center = ringSize / 2;
+        const innerCenter = innerSize / 2;
+
+        // Ukuran icon (berbeda antara HP dan layar besar)
+        const iconSize = ringSize < 400 ? 40 : 48;
+        const halfIcon = iconSize / 2;
+
+        // Bagi array icon menjadi 6 di luar dan 6 di dalam
+        const outerIcons = icons.slice(0, 6);
+        const innerIcons = icons.slice(6);
+
+        // ========== OUTER ICONS ==========
+        outerIcons.forEach((item, i) => {
+            // Hitung sudut dan posisi x,y icon di ring luar (start dari atas = -90deg)
+            const angle = (i / outerIcons.length) * 2 * Math.PI - Math.PI / 2;
+            const radius = ringSize / 2;
+            const x = center + radius * Math.cos(angle) - halfIcon;
+            const y = center + radius * Math.sin(angle) - halfIcon;
+
+            // Buat elemen div icon
+            const el = document.createElement("div");
+            el.className = `
+  absolute w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-xl 
+  flex items-center justify-center shadow-md 
+  border border-blue-200 hover:scale-110 transition-all duration-300
+`;
+            el.style.left = `${x}px`;
+            el.style.top = `${y}px`;
+
+            // Masukkan icon dan tooltip label
+            el.innerHTML = `
+  <div class="icon-wrapper-outer relative group">
+    <i class="fas ${item.icon} text-blue-500 text-xl"></i>
+    <div class="tooltip">${item.label}</div>
+  </div>
+`;
+
+            // Pause animasi saat hover
+            el.addEventListener("mouseenter", () => {
+                el.querySelector(".icon-wrapper-outer").style.animationPlayState = 'paused';
+            });
+
+            // Reset animasi saat mouse keluar
+            el.addEventListener("mouseleave", () => {
+                el.querySelector(".icon-wrapper-outer").style.animation = 'none';
+                el.offsetHeight; // force reflow
+                el.querySelector(".icon-wrapper-outer").style.animation = "rotateCounter 30s linear infinite";
+            });
+
+            // Tambahkan ke ring luar
+            outerContainer.appendChild(el);
+        });
+
+        // ========== INNER ICONS ==========
+        innerIcons.forEach((item, i) => {
+            // Hitung sudut dan posisi x,y icon di ring dalam
+            const angle = (i / innerIcons.length) * 2 * Math.PI;
+            const radius = innerSize / 2;
+            const x = innerCenter + radius * Math.cos(angle) - halfIcon;
+            const y = innerCenter + radius * Math.sin(angle) - halfIcon;
+
+            // Buat elemen div icon
+            const el = document.createElement("div");
+            el.className = `
+  absolute w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-xl 
+  flex items-center justify-center shadow-md 
+  border border-blue-200 hover:scale-110 transition-all duration-300
+`;
+            el.style.left = `${x}px`;
+            el.style.top = `${y}px`;
+
+            // Masukkan icon dan tooltip label
+            el.innerHTML = `
+  <div class="icon-wrapper-inner relative group">
+    <i class="fas ${item.icon} text-blue-500 text-xl"></i>
+    <div class="tooltip">${item.label}</div>
+  </div>
+`;
+
+            // Pause animasi saat hover
+            el.addEventListener("mouseenter", () => {
+                el.querySelector(".icon-wrapper-inner").style.animationPlayState = 'paused';
+            });
+
+            // Reset animasi saat mouse keluar
+            el.addEventListener("mouseleave", () => {
+                el.querySelector(".icon-wrapper-inner").style.animation = 'none';
+                el.offsetHeight; // force reflow
+                el.querySelector(".icon-wrapper-inner").style.animation = "rotateClockwise 45s linear infinite";
+            });
+
+            // Tambahkan ke ring dalam
+            innerContainer.appendChild(el);
+        });
+    }
+
+
+    // DEBOUNCED RESIZE
+    let resizeTimeout;
+    window.addEventListener("resize", () => {
+        pauseIconAnimations();
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+            renderIcons();
+            resetAnimations();
+        }, 250);
+    });
+
+    // RENDER
+    renderIcons();
+}); 
+</script>
+
+<!-- SCRIPT EKSKUL NAVBAR-->
+<script>
+  const menuBtn = document.getElementById("menu-button");
+  const arrow = document.getElementById("menu-arrow");
+  const megaMenu = document.getElementById("megamenu-with-image");
+  const navbar = document.getElementById("navbar");
+  const navContent = document.getElementById("navbar-content");
+  const hero = document.getElementById('hero-section');
+
+  let hideTimeout;
+  let position = "onhero";
+
+  const showMenu = () => {
+      clearTimeout(hideTimeout);
+      megaMenu.classList.remove("hidden");
+      arrow.classList.add("rotate-up");
+
+      // Ubah navbar transparan jadi putih
+      navbar.classList.remove("navbar-transparent", "text-white");
+      navbar.classList.add("bg-white", "text-gray-800");
+
+      if (position === "onhero") { // Ubah padding nav
+          navContent.classList.remove("py-3");
+          navContent.classList.add("py-1");
+      };
+  };
+
+  const hideMenu = () => {
+      hideTimeout = setTimeout(() => {
+          megaMenu.classList.add("hidden");
+          arrow.classList.remove("rotate-up");
+
+          // Kembalikan background navbar
+          navbar.classList.add("navbar-transparent", "text-white");
+          navbar.classList.remove("bg-white", "shadow-md", "text-gray-800");
+
+          if (position === "onhero") { // Ubah padding nav
+
+              // Kembalikan padding nav
+              navContent.classList.remove("py-1");
+              navContent.classList.add("py-3");
+          }
+      }, 150);
+  };
+
+  menuBtn.addEventListener("mouseenter", showMenu);
+  menuBtn.addEventListener("mouseleave", hideMenu);
+
+  megaMenu.addEventListener("mouseenter", () => {
+      clearTimeout(hideTimeout);
+  });
+  megaMenu.addEventListener("mouseleave", hideMenu);
+
+  window.addEventListener('scroll', () => {
+      const heroBottom = hero.offsetTop + hero.offsetHeight;
+      const scrollTop = window.scrollY;
+
+      if (scrollTop < heroBottom) {
+          // Masih di hero section
+          navbar.classList.add('bg-transparent', 'text-white');
+          navbar.classList.remove('bg-white', 'text-gray-900', 'shadow-md');
+
+          // Ubah padding nav
+          navContent.classList.remove("py-3");
+          navContent.classList.add("py-1");
+          position = "onhero";
+      } else {
+          // Scroll di luar hero
+          navbar.classList.remove('bg-transparent', 'text-white');
+          navbar.classList.add('bg-white', 'text-gray-900', 'shadow-md');
+          // Kembalikan padding nav
+          navContent.classList.remove("py-1");
+          navContent.classList.add("py-3");
+          position = "nonhero";
+      }
+  });
+</script>
+
+</body>
+
+</html>
